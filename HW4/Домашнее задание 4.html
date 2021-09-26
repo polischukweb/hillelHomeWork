@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнее задание №4</title>
+</head>
+
+<body>
+    <script>
+
+        var playerNumber = parseInt(prompt('Введите количество гор'));
+        var mountainHeight;
+        var numberMountain = 0;
+        while (numberMountain <= playerNumber) {
+            var mountainHeight = Math.floor(Math.random() * 25); //высота гор 15
+            showGroundLeft();
+            showGroundRight();
+            numberMountain++;
+        }
+
+        
+        
+        //Функция отрисовки левой стороны горы и верхушки
+        function showGroundLeft() {
+            var groundLeft = "\\";
+            var leftCounter = mountainHeight;
+            let hightLeftCounter = 0;
+    
+            while (hightLeftCounter <= leftCounter){
+            var rndBreakLeft = Math.floor(Math.random() * 100);
+            var bosomLeft = "";
+            let rndTomb = Math.floor(Math.random() * 100); 
+            let tomb = (rndTomb > 65) ? "]-+" : " "; // Ставим 35% на наличие могилки путника
+            let counterBosomLeft = 0;
+
+            while (counterBosomLeft <= hightLeftCounter) {
+            let rndDiamondRight = Math.floor(Math.random() * 100);
+            let diamond = (rndDiamondRight > 90) ? "◆" : "#"; // ставим 10% на налиин брилианта в земле
+            var rndGrassLeft = Math.floor(Math.random() * 100);
+
+            var treeLeft = "="; //начало генератора дерева
+            var rndTreeLeft = Math.floor(Math.random() * 5);
+            let threeCounterLeft = 0;
+            while (threeCounterLeft < rndTreeLeft) {
+
+            var treeLeft = treeLeft + "=";
+            threeCounterLeft++;
+            } //конец генератора дерева
+            
+
+            var grassLeft = (rndGrassLeft > 90) ? treeLeft + "@" : (rndGrassLeft > 85) ? "=*" : (rndGrassLeft > 70) ? "=" : ""; // ставим 15% на наличие цветочка и 30% на наличие травы и 10% на дерево которое генерируется рандомно
+            var bosomLeft = bosomLeft + diamond;
+            let rndDoubleStep = Math.floor(Math.random() * 100); 
+            if (rndDoubleStep > 10) {     // Делаем вероятность 10% на то что ступенька будет на 1 выше или ниже
+            counterBosomLeft++;
+            } else {
+                counterBosomLeft = counterBosomLeft + 2;
+            }
+            
+            }
+            if (rndBreakLeft>100) { // делаем шанс обрыва с начала горы, тут отключен
+                break;
+            }
+            else if (leftCounter == hightLeftCounter) { //Проверка на самую верхнюю ступень
+            var groundLeft = (leftCounter == hightLeftCounter) ? "|" + tomb : "\\"; 
+            console.log(bosomLeft + groundLeft);
+            hightLeftCounter++;
+                } else{
+                    console.log(bosomLeft + groundLeft + grassLeft);
+                    hightLeftCounter++; 
+                }
+            }
+            }
+            
+        //Функция отрисовки правой стороны горы
+        function showGroundRight() {
+            var groundRight = "/";
+        
+            var rightCounter = mountainHeight-1;
+            while (rightCounter>0){
+            var bosom = "";
+            let counterBosom = 0;
+        
+            while (counterBosom < rightCounter) {
+            var rndBreak = Math.floor(Math.random() * 100);
+            let rndDiamondRight = Math.floor(Math.random() * 100);
+            let diamond = (rndDiamondRight > 90) ? "◆" : "#"; //cтавим 10% на налиин брилианта в земле
+            var rndGrass = Math.floor(Math.random() * 100);
+
+            var tree = "="; //начало генератора дерева
+            var rndTree = Math.floor(Math.random() * 5);
+            let threeCounter = 0;
+            while (threeCounter < rndTree) {
+            var tree = tree + "=";
+            threeCounter++;
+            } //конец генератора дерева
+
+            var grass = (rndGrass > 90) ? tree + "@" : (rndGrass > 85) ? "=*" : (rndGrass > 70) ? "=" : ""; // ставим 15% на наличие цветочка и 30% на наличие травы и 10% на дерево которое генерируется рандомно
+            var bosom = bosom + diamond;
+        
+            let rndDoubleStep = Math.floor(Math.random() * 100); 
+            if (rndDoubleStep > 10) {     // Делаем вероятность 10% на то что ступенька будет на 1 выше или ниже
+            counterBosom++;
+            } else {
+                counterBosom = counterBosom + 2;
+            }
+            
+            }
+            if (rndBreak>95) { // делаем шанс в 5% на обрыв горы 
+                break;
+            }
+            else{
+                    console.log(bosom + groundRight + grass);
+                    rightCounter--; 
+                }
+            }
+            }
+
+
+        </script>
+</body>
+
+</html>
+
+

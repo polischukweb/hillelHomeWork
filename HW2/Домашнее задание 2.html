@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнее задание №1</title>
+</head>
+
+<body>
+    <script>
+        let x0 = prompt("Введите Ваш начальный взнос:");
+        let yearInterestPercent = prompt("Введите проценты прироста депозита в год:");
+        let taxPercent = prompt("Введите процент налога на прибыль:");
+        let monthsNums = prompt("На сколько месцев депозит:");
+        // Выясняем процентную ставку за месяц
+        const interestMonthly =  yearInterestPercent / 12 / 100;
+        //Выясняем эффективную процентную ставку
+        const interestMonthlyEffective = interestMonthly * (1 - taxPercent / 100);
+        //Рассчитываем по формуле нашу сумму
+        const x = x0 * (1 + interestMonthlyEffective)**monthsNums;
+        const y = x0 * (1 + interestMonthlyEffective)**600;
+
+        alert("По окончанию срока на счету у вас будет: " + x);
+        alert("Через 50 лет на счету у вас будет: " + y);
+    </script>
+</body>
+
+</html>
